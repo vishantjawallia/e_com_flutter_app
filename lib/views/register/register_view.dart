@@ -1,8 +1,11 @@
 library register_view;
 
+import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
+import '../../widgets/custom_text_field.dart';
+import '../../widgets/simple_button.dart';
 import 'register_view_model.dart';
 
 part 'register_mobile.dart';

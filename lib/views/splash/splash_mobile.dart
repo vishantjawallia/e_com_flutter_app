@@ -9,7 +9,11 @@ class _SplashMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('SplashMobile')),
+      body: Center(
+          child: Text(
+        'E Commerce App',
+        style: context.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w600),
+      )),
     );
   }
 }

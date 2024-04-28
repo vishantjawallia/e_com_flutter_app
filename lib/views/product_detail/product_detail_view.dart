@@ -1,8 +1,11 @@
 library product_detail_view;
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
+import '../../theme/palette.dart';
 import 'product_detail_view_model.dart';
 
 part 'product_detail_mobile.dart';
@@ -16,7 +19,7 @@ class ProductDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProductDetailViewModel>.reactive(
-      viewModelBuilder: () => ProductDetailViewModel(),
+      viewModelBuilder: () => ProductDetailViewModel(Get.arguments),
       onModelReady: (viewModel) {
         // Do something once your viewModel is initialized
       },

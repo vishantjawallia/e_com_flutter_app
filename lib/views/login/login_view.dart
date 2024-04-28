@@ -1,8 +1,11 @@
 library login_view;
 
+import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
+import '../../widgets/custom_text_field.dart';
+import '../../widgets/simple_button.dart';
 import 'login_view_model.dart';
 
 part 'login_mobile.dart';
@@ -17,20 +20,16 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
-      onModelReady: (viewModel) {
+      onViewModelReady: (viewModel) {
         // Do something once your viewModel is initialized
       },
       builder: (context, viewModel, child) {
-        return ScreenTypeLayout(
-          mobile: _LoginMobile(viewModel),
-          desktop: _LoginMobile(viewModel),
-          tablet: _LoginMobile(viewModel),
-
-          //Uncomment it if you've planned to support specifically for desktop and tablet
-          //desktop: _LoginDesktop(viewModel),
-          //tablet: _LoginTablet(viewModel),  
+        return ScreenTypeLayout.builder(
+          mobile: (_) => _LoginMobile(viewModel),
+          desktop: (_) => _LoginMobile(viewModel),
+          tablet: (_) => _LoginMobile(viewModel),
         );
-      }
+      },
     );
   }
 }
