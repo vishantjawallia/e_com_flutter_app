@@ -25,7 +25,7 @@ class _ProductMobile extends StatelessWidget {
                     viewModel.mainController.user.value!.email ?? "",
                   ),
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage: AssetImage(
+                    backgroundImage: NetworkImage(
                       viewModel.mainController.user.value!.avatar ?? "",
                     ),
                   ),

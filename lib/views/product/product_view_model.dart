@@ -63,6 +63,7 @@ class ProductViewModel extends BaseViewModel {
   }
 
   void logOutHandler() {
+    
     showDialog(
       context: Get.context!,
       builder: (BuildContext context) {
