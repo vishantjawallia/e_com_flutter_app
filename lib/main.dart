@@ -3,9 +3,9 @@
 import 'package:e_com_flutter_app/config/config.dart';
 import 'package:e_com_flutter_app/routes.dart';
 import 'package:e_com_flutter_app/themes/theme.dart';
-import 'package:e_com_flutter_app/views/home/home_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'views/splash/splash_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: Themes.light(),
       darkTheme: Themes.dark(),
-      home:  HomeView(),
+      home: SplashView(),
       getPages: routes,
     );
   }
