@@ -1,4 +1,4 @@
-package com.example.gapopa_flutter_app
+package com.ecom_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 
