@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:e_com_flutter_app/config/config.dart';
+import 'package:e_com_flutter_app/views/product/product_view.dart';
+import 'package:e_com_flutter_app/widgets/global_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -38,6 +40,12 @@ class ProfileViewModel extends BaseViewModel {
   }
 
   void editHandler() {
+    if (name.text.isEmpty) {
+      return GlobalWidgets.snackBar(Get.context!, msg: 'Name should not be empty!');
+    }
+    if (file == null) {
+      return GlobalWidgets.snackBar(Get.context!, msg: 'Please upload profile image!');
+    }
     callEditApi();
   }
 
@@ -52,7 +60,9 @@ class ProfileViewModel extends BaseViewModel {
   void callEditApi() async {
     setBusy(true);
     final edit = await apiRepo.edit(name.text, "${mainController.user.value!.id}", file: file);
+
     setBusy(false);
     mainController.user.value = edit;
+    Get.offAllNamed(ProductView.routeName);
   }
 }

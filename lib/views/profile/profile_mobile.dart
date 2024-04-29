@@ -15,45 +15,51 @@ class _ProfileMobile extends StatelessWidget {
       appBar: AppBar(
         title: const Text('User Profile'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24),
-        child: Column(
-          children: [
-            CircleAvatar(
-              radius: 50,
-              child: mainController.user.value!.avatar == defaultImage
-                  ? GestureDetector(
-                      onTap: viewModel.profileTap,
-                      child: const Icon(Icons.person_add, size: 40),
-                    )
-                  : Image(
-                      image: NetworkImage(mainController.user.value!.avatar!),
-                    ),
-            ),
-            const SizedBox(width: 0.0, height: 10),
-            Text(
-              '${mainController.user.value!.name}',
-              style: context.textTheme.titleMedium,
-            ),
-            Text(
-              '${mainController.user.value!.email}',
-              style: context.textTheme.titleMedium,
-            ),
-            const SizedBox(width: 0.0, height: 10),
-            CustomTextField(
-              controller: viewModel.name,
-              hintText: 'Enter you name',
-              iconData: Icons.lock_rounded,
-              keyboardType: TextInputType.text,
-              validator: (e) => viewModel.inputValidator(e, 'name'),
-            ),
-            const SizedBox(width: 0.0, height: 40),
-            SimpleButton(
-              onPressed: viewModel.editHandler,
-              text: 'Sumbit',
-              isLoading: viewModel.isBusy,
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          height: context.height * 0.7,
+          padding: const EdgeInsets.symmetric(vertical: 24),
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: viewModel.profileTap,
+                child: CircleAvatar(
+                  backgroundImage: viewModel.file != null ? FileImage(viewModel.file!) : null,
+                  radius: 50,
+                  child: viewModel.file != null
+                      ? const SizedBox(width: 0.0, height: 0.0)
+                      : mainController.user.value!.avatar == defaultImage
+                          ? const Icon(Icons.person_add, size: 40)
+                          : Image(
+                              image: NetworkImage(mainController.user.value!.avatar!),
+                            ),
+                ),
+              ),
+              const SizedBox(width: 0.0, height: 10),
+              Text(
+                '${mainController.user.value!.name}',
+                style: context.textTheme.titleMedium,
+              ),
+              Text(
+                '${mainController.user.value!.email}',
+                style: context.textTheme.titleMedium,
+              ),
+              const SizedBox(width: 0.0, height: 10),
+              CustomTextField(
+                controller: viewModel.name,
+                hintText: 'Enter you name',
+                iconData: Icons.lock_rounded,
+                keyboardType: TextInputType.text,
+                validator: (e) => viewModel.inputValidator(e, 'name'),
+              ),
+              const SizedBox(width: 0.0, height: 40),
+              SimpleButton(
+                onPressed: viewModel.editHandler,
+                text: 'Sumbit',
+                isLoading: viewModel.isBusy,
+              ),
+            ],
+          ),
         ),
       ),
     );

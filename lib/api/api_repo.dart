@@ -79,11 +79,15 @@ class ApiRepo implements ApiService {
     try {
       if (file != null) {
         final res1 = await _apiRepository.multiPartFormData(UrlPath.upload, file, statusCode: 201);
+        log(res1.toString());
         final upload = UploadModel.fromJson(res1!.data);
+        log(upload.toString());
         if (upload.location!.isNotEmpty) {
           body['avatar'] = upload.location;
-          final res2 = await _apiRepository.put("${UrlPath.users}/$userId", body, statusCode: 201);
+          final res2 = await _apiRepository.put("${UrlPath.users}/$userId", body, statusCode: 200);
+          log(res2.toString());
           value = UserModel.fromJson(res2!.data);
+          log(value.toString());
           return value;
         }
       } else {
@@ -93,8 +97,8 @@ class ApiRepo implements ApiService {
       }
     } catch (e, stackTrace) {
       Helper.printFunctionName(stackTrace, e);
-      return value!;
     }
+    return value!;
   }
 
   @override

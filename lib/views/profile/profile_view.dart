@@ -4,6 +4,7 @@ import 'package:e_com_flutter_app/config/config.dart';
 import 'package:e_com_flutter_app/controller/main_controller.dart';
 import 'package:e_com_flutter_app/widgets/simple_button.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
